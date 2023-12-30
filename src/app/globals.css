@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @layer utilities { */
+/*     .text-headline-md { */
+/*         @apply text-lg; */
+/*         @apply font-bold; */
+/*     } */
+/**/
+/*     .text-label-md { */
+/*         @apply text-base; */
+/*         @apply font-normal; */
+/*     } */
+/**/
+/*     .text-label-sm { */
+/*         @apply text-sm; */
+/*         @apply font-light; */
+/*     } */
+/* } */
