@@ -7,7 +7,7 @@ export default async function SignUpPage() {
     return (
         <form
             action={signUpFormAction}
-            className="flex flex-col w-[400px] p-4 gap-6 items-center rounded-2xl bg-primary-800 drop-shadow"
+            className="flex flex-col w-[400px] p-4 gap-6 items-center rounded-2xl bg-primary-900 drop-shadow"
         >
             <div className="flex w-full max-w-sm items-center gap-2">
                 <AiOutlineLogin fontSize={28} />
@@ -16,7 +16,7 @@ export default async function SignUpPage() {
                 </h1>
             </div>
             <TextField label="Username" name="username" />
-            <TextField label="Password" name="password" />
+            <TextField label="Password" type="password" name="password" />
             <div className="flex w-full justify-end gap-4">
                 <Button>
                     <AiOutlineLogin fontSize={24} />

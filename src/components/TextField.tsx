@@ -19,7 +19,7 @@ export function TextField(props: Props) {
         >
             <input
                 required
-                name="username"
+                name={name}
                 className="bg-inherit outline outline-0 py-2.5 px-3 rounded-full border border-primary-500 w-full h-full text-label-md peer focus:border-accent-300 valid:border-accent-300"
                 id={id}
                 {...rest}

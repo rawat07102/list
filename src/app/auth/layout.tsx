@@ -1,12 +1,13 @@
 import { PropsWithChildren } from "react"
 import Image from "next/image"
+import loginBackgroundImage from "../../../public/images/login-background.png"
 
 export default function AuthLayout({ children }: PropsWithChildren) {
     return (
         <div className="flex w-full h-full flex-column justify-center items-center bg-transparent absolute top-0 left-0">
             <Image
                 className="-z-10 rounded-lg"
-                src="/images/login-background.png"
+                src={loginBackgroundImage}
                 alt="Background"
                 fill
             />

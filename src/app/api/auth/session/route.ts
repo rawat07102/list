@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
+import { cookies } from "next/headers"
 
 async function getSession(req: NextRequest) {
-    const token = req.cookies.get("accessToken")?.value
-    return NextResponse.json({ token })
+    const accessToken = cookies().get("accessToken")?.value
+    return NextResponse.json({ accessToken })
 }
 
 export { getSession as GET }

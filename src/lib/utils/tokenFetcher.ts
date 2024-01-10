@@ -1,10 +1,10 @@
-import { getFullUrl } from "@/app/api/utils/getFullUrl"
+import { getFullUrl } from "@/lib/utils/getFullUrl"
 
 export type Session = {
-    token: string
+    accessToken: string
 }
 
-export async function getToken(): Promise<Session> {
+export async function fetchSession(): Promise<Session> {
     const url = getFullUrl("api/auth/session")
     const res = await fetch(url)
     return res.json()

@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import { gray, indigo } from "tailwindcss/colors"
+import { neutral, indigo } from "tailwindcss/colors"
 
 export const content = [
     "./src/components/**/*.tsx",
@@ -9,7 +9,7 @@ export const content = [
 export const theme = {
     extend: {
         colors: {
-            primary: gray,
+            primary: neutral,
             accent: indigo,
         },
     },
