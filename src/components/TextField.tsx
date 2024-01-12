@@ -13,7 +13,7 @@ export function TextField(props: Props) {
         <div
             className={cn(
                 "w-full min-w-[200px] h-10 flex",
-                "relative bg-inherit",
+                "relative bg-inherit rounded-full",
                 className
             )}
         >

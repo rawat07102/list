@@ -7,6 +7,8 @@ const nextConfig = {
             hostname: "localhost",
             port: "4000",
             pathname: "/image/**"
+        }, {
+            hostname: "i.ytimg.com"
         }]
     }
 }

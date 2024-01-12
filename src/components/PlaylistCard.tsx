@@ -1,4 +1,3 @@
-"use client"
 import { formatDate } from "@/lib/formatDate"
 import { getImageSrc } from "@/lib/utils/getImageSrc"
 import { Playlist } from "@/types"
@@ -10,7 +9,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
     playlist: Playlist
 }
 
-export default function PlaylistCard(props: Props) {
+export default async function PlaylistCard(props: Props) {
     const { _id, thumbnail, title, viewsCount, videos, createdAt, ...rest } =
         props.playlist
     return (

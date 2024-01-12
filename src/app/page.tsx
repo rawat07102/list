@@ -6,7 +6,7 @@ import fetcher from "@/lib/utils/fetcher"
 import { cookies } from "next/headers"
 import { Playlist } from "@/types"
 
-const getPlaylists = async (): Promise<Playlist[]> => {
+const getUsersPlaylists = async (): Promise<Playlist[]> => {
     const token = cookies().get("accessToken")?.value
     const res = await fetcher.get<Playlist[]>("user/playlists", {
         headers: {
@@ -17,7 +17,7 @@ const getPlaylists = async (): Promise<Playlist[]> => {
 }
 
 export default async function HomePage() {
-    const playlists = await getPlaylists()
+    const userLibrary = await getUsersPlaylists()
 
     return (
         <main className="w-full h-full p-4 flex gap-9">
@@ -34,7 +34,7 @@ export default async function HomePage() {
                     <span className="text-xl">Your Library</span>
                     <NewPlaylistButton />
                 </div>
-                {playlists.map((p) => (
+                {userLibrary.map((p) => (
                     <PlaylistCard playlist={p} />
                 ))}
             </section>
