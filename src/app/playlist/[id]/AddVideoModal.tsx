@@ -1,31 +1,20 @@
 "use client"
 import Button from "@/components/Button"
 import { TextField } from "@/components/TextField"
-import useSession from "@/lib/hooks/useSession"
-import fetcher from "@/lib/utils/fetcher"
+import { addVideoToPlaylist } from "@/lib/actions"
 import React from "react"
 import { MdAdd as AddIcon } from "react-icons/md"
 
 type Props = {
-    id: string
+    playlistId: string
 }
 
-export default function AddVideoModal({ id }: Props) {
+export default function AddVideoModal({ playlistId }: Props) {
     const [open, setOpen] = React.useState(false)
     const [videoId, setVideoId] = React.useState("")
-    const token = useSession()
+
     async function addVideo() {
-        fetcher.post(
-            `/playlist/${id}/addVideo`,
-            {
-                videoId: id,
-            },
-            {
-                headers: {
-                    Authorization: `Bearer: ${token}`,
-                },
-            }
-        )
+        await addVideoToPlaylist(playlistId, videoId)
     }
 
     return (

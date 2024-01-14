@@ -1,4 +1,5 @@
-import { formatDate } from "@/lib/formatDate"
+import { getPlaylistById } from "@/lib/actions"
+import { formatDate } from "@/lib/utils/formatDate"
 import { getImageSrc } from "@/lib/utils/getImageSrc"
 import { Playlist } from "@/types"
 import Image from "next/image"
@@ -6,21 +7,20 @@ import Link from "next/link"
 import { HTMLAttributes } from "react"
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-    playlist: Playlist
+    playlistId: Playlist["_id"]
 }
 
-export default async function PlaylistCard(props: Props) {
-    const { _id, thumbnail, title, viewsCount, videos, createdAt, ...rest } =
-        props.playlist
+export default async function PlaylistCard({ playlistId }: Props) {
+    const { _id, thumbnail, title, viewsCount, videos, createdAt } =
+        await getPlaylistById(playlistId)
     return (
         <Link
             href={`/playlist/${_id}`}
             className={
                 "group flex flex-col justify-center items-center drop-shadow-lg"
             }
-            {...rest}
         >
-            <div className="p-2 self-stretch flex justify-end items-end rounded-lg relative h-[144px] w-[256px]">
+            <div className="p-2 self-stretch flex justify-end items-end rounded-lg relative h-[180px] w-[320px]">
                 <Image
                     className="rounded-lg transition-transform duration-300 ease-out group-hover:scale-105"
                     src={getImageSrc(thumbnail)}

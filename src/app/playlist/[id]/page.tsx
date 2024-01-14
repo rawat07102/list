@@ -1,11 +1,11 @@
 import Button from "@/components/Button"
 import VideoCard from "@/components/VideoCard"
-import { formatDate } from "@/lib/formatDate"
-import { getPlaylistById } from "@/lib/utils/apiCalls"
+import { formatDate } from "@/lib/utils/formatDate"
 import { getImageSrc } from "@/lib/utils/getImageSrc"
 import Image from "next/image"
 import { MdPlayArrow as PlayIcon } from "react-icons/md"
 import AddVideoModal from "./AddVideoModal"
+import { getPlaylistById } from "@/lib/actions"
 
 type Props = {
     params: { id: string }
@@ -13,14 +13,14 @@ type Props = {
 
 export default async function PlaylistPage(props: Props) {
     const {
-        params: { id }, 
+        params: { id },
     } = props
     const playlist = await getPlaylistById(id)
     return (
-        <main className="relative flex w-full h-full py-4 gap-16">
-            <AddVideoModal id={id} />
-            <section className="flex flex-col gap-3 drop-shadow-md rounded-2xl overflow-hidden w-[356px]">
-                <div className="flex rounded-2xl relative h-[216px] w-[356px]">
+        <main className="relative flex w-full h-full py-4 gap-4">
+            <AddVideoModal playlistId={id} />
+            <section className="flex flex-col gap-3 drop-shadow-md rounded-2xl overflow-hidden bg-gradient-to-b from-primary-700 to-transparent p-2">
+                <div className="flex rounded-2xl shadow-md shadow-primary-900 relative h-[180px] w-[320px]">
                     <Image
                         className="rounded-2xl"
                         src={getImageSrc(playlist.thumbnail)}
@@ -45,7 +45,7 @@ export default async function PlaylistPage(props: Props) {
                     </div>
                 </div>
             </section>
-            <section className="flex-1 flex flex-col gap-8">
+            <section className="flex-1 flex flex-col gap-8 mt-4">
                 {playlist.videos.map((videoId) => (
                     <VideoCard videoId={videoId} key={videoId} />
                 ))}

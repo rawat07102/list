@@ -16,7 +16,7 @@ export default function RootLayout({
     return (
         <html>
             <body
-                className={`${robotoFlex.className} mx-auto px-9 text-primary-50 bg-primary-950 h-screen max-w-screen-2xl`}
+                className={`${robotoFlex.className} mx-auto p-2 text-primary-50 bg-primary-950 h-screen max-w-screen-2xl`}
             >
                 {children}
             </body>

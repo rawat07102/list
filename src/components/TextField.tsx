@@ -4,10 +4,11 @@ import React, { InputHTMLAttributes } from "react"
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
     label: string
     name?: string
+    hideLabelOnFocus?: true
 }
 
 export function TextField(props: Props) {
-    const { label, name, className, ...rest } = props
+    const { label, name, className, hideLabelOnFocus, ...rest } = props
     const id = name ? name + "-input" : label + "-input"
     return (
         <div
@@ -25,8 +26,11 @@ export function TextField(props: Props) {
                 {...rest}
             />
             <label
-                className="absolute left-3 top-2 peer-valid:-translate-y-5  peer-focus:-translate-y-5 px-[2px] bg-inherit transition-all duration-300 pointer-events-none"
                 htmlFor={id}
+                className={cn(
+                    hideLabelOnFocus && "peer-focus:opacity-0 peer-valid:opacity-0",
+                    "absolute left-3 top-2 peer-valid:-translate-y-5  peer-focus:-translate-y-5 px-[2px] bg-inherit transition-all duration-300 pointer-events-none"
+                )}
             >
                 {label}
             </label>
