@@ -3,6 +3,8 @@ import PlaylistCard from "@/components/PlaylistCard"
 import { TextField } from "@/components/TextField"
 import { NewPlaylistButton } from "@/components/NewPlaylistButton"
 import { getUsersPlaylists } from "@/lib/actions"
+import CardLoader from "@/components/loaders/CardLoader"
+import ButtonLoader from "@/components/loaders/ButtonLoader"
 
 export default async function HomePage() {
     const userLibrary = await getUsersPlaylists()

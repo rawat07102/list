@@ -22,7 +22,7 @@ export function NewPlaylistButton() {
         router.push(`/playlist/${res.data._id}`)
     }
     return (
-        <Button className="px-2 py-3" onClick={createNewPlaylist}>
+        <Button icon onClick={createNewPlaylist}>
             <AddIcon />
         </Button>
     )

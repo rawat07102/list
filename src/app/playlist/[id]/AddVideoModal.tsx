@@ -21,7 +21,7 @@ export default function AddVideoModal({ playlistId }: Props) {
         <>
             <Button
                 onClick={() => setOpen((o) => !o)}
-                className="p-2 absolute bottom-[36px] right-[36px]"
+                className="p-2 absolute top-1 right-1/4 z-10"
                 icon
             >
                 <AddIcon />

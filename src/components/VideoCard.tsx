@@ -12,10 +12,10 @@ export default async function VideoCard(props: Props) {
     const video = await getVideoById(props.videoId)
     const { snippet, statistics } = video
     return (
-        <div className="flex items-start gap-4 rounded-2xl drop-shadow-md p-2 pl-4 hover:bg-gradient-to-r from-primary-800 to-transparent cursor-pointer">
+        <div className="flex items-start gap-4 rounded-lg drop-shadow-md p-2 pl-4 hover:bg-gradient-to-r from-primary-800 to-transparent cursor-pointer">
             <div className="relative h-[90px] w-[160px]">
                 <Image
-                    className="drop-shadow-md rounded-2xl"
+                    className="drop-shadow-md rounded-lg"
                     src={snippet.thumbnails.medium.url}
                     alt={snippet.title}
                     fill

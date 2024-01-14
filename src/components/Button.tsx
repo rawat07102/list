@@ -10,8 +10,8 @@ export default function Button(props: ButtonProps) {
     return (
         <button
             className={cn(
-                icon ? "px-2 py-2 text-2xl" : "px-6 py-2",
-                "flex min-w-[40px] items-center justify-center gap-2 rounded-full bg-accent-300 text-accent-950 drop-shadow hover:drop-shadow-2xl hover:bg-accent-200 transition-transform hover:scale-105 duration-300 ease-out active:scale-100",
+                icon ? "p-3 text-2xl" : "px-6 py-2",
+                "flex min-w-[40px] items-center justify-center gap-2 rounded-full bg-accent-300 text-accent-950 shadow hover:shadow-2xl shadow-black hover:bg-accent-200 transition-transform duration-300 ease-out active:scale-100",
                 className
             )}
             {...rest}

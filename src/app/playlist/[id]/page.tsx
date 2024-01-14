@@ -17,12 +17,12 @@ export default async function PlaylistPage(props: Props) {
     } = props
     const playlist = await getPlaylistById(id)
     return (
-        <main className="relative flex w-full h-full py-4 gap-4">
+        <main className="relative flex w-full h-full gap-4">
             <AddVideoModal playlistId={id} />
-            <section className="flex flex-col gap-3 drop-shadow-md rounded-2xl overflow-hidden bg-gradient-to-b from-primary-700 to-transparent p-2">
-                <div className="flex rounded-2xl shadow-md shadow-primary-900 relative h-[180px] w-[320px]">
+            <section className="flex flex-col gap-3 drop-shadow-md rounded-lg overflow-hidden bg-gradient-to-b from-primary-800 to-transparent p-2">
+                <div className="flex rounded-lg shadow-md shadow-primary-900 relative h-[180px] w-[320px]">
                     <Image
-                        className="rounded-2xl"
+                        className="rounded-lg"
                         src={getImageSrc(playlist.thumbnail)}
                         alt={playlist.title}
                         fill
@@ -45,7 +45,7 @@ export default async function PlaylistPage(props: Props) {
                     </div>
                 </div>
             </section>
-            <section className="flex-1 flex flex-col gap-8 mt-4">
+            <section className="flex-1 flex flex-col gap-4 mt-8">
                 {playlist.videos.map((videoId) => (
                     <VideoCard videoId={videoId} key={videoId} />
                 ))}
