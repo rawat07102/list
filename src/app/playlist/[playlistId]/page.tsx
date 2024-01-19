@@ -8,17 +8,17 @@ import AddVideoModal from "./AddVideoModal"
 import { getPlaylistById } from "@/lib/actions"
 
 type Props = {
-    params: { id: string }
+    params: { playlistId: string }
 }
 
 export default async function PlaylistPage(props: Props) {
     const {
-        params: { id },
+        params: { playlistId },
     } = props
-    const playlist = await getPlaylistById(id)
+    const playlist = await getPlaylistById(playlistId)
     return (
         <main className="relative flex w-full h-full gap-4">
-            <AddVideoModal playlistId={id} />
+            <AddVideoModal playlistId={playlistId} />
             <section className="flex flex-col gap-3 drop-shadow-md rounded-lg overflow-hidden bg-gradient-to-b from-primary-800 to-transparent p-2">
                 <div className="flex rounded-lg shadow-md shadow-primary-900 relative h-[180px] w-[320px]">
                     <Image
@@ -39,15 +39,17 @@ export default async function PlaylistPage(props: Props) {
                         {playlist.title}
                     </span>
                     <div className="text-gray-300 flex gap-2 text-sm font-light">
-                        <span>{playlist.viewsCount} views</span>
-                        <span>|</span>
                         <span>{formatDate(playlist.createdAt)}</span>
                     </div>
                 </div>
             </section>
             <section className="flex-1 flex flex-col gap-4 mt-8">
                 {playlist.videos.map((videoId) => (
-                    <VideoCard videoId={videoId} key={videoId} />
+                    <VideoCard
+                        playlistId={playlistId}
+                        videoId={videoId}
+                        key={videoId}
+                    />
                 ))}
             </section>
         </main>
