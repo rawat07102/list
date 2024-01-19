@@ -1,5 +1,5 @@
 "use server"
-import { Playlist } from "@/types"
+import { Playlist, Video } from "@/types"
 import { cookies } from "next/headers"
 import { getApiUrl } from "./utils/getFullUrl"
 import { revalidateTag } from "next/cache"
@@ -72,4 +72,18 @@ export async function getUsersPlaylists(): Promise<Playlist["_id"][]> {
         console.error("[ACTION:getUsersPlaylists]")
         throw err
     }
+}
+
+export async function getVideoById(id: string): Promise<Video> {
+    const res = await fetch(getApiUrl(`youtube/video/${id}`), {
+        next: {
+            tags: ["getVideoById"]
+        }
+    })
+    if (!res.ok) {
+        throw "Error while fetching: getVideoById"
+    }
+
+    const data = await res.json()
+    return data.items[0]
 }
